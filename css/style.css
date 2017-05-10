@@ -312,6 +312,9 @@ h1:last-child{
 	font-style:italic;
 	margin:6px 0px 0px 6px;
 	float:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
 }
 #searchArea ul{
 	margin:0px;
@@ -356,9 +359,11 @@ h1:last-child{
 }
 #searchArea input[type="button"]{
 	float:right;
-	font-weight:bold;
 	margin: 4px 10px 0px 0px;
 	width:120px;
+}
+#simpleSearchSubmit{
+	font-weight:bold;
 }
 #searchResults{
 	position:absolute;

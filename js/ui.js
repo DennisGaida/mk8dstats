@@ -111,6 +111,7 @@ var ui = {
     return -1;
   },
 
+
   simpleSearchOnClick:function(e){
     var li = document.querySelectorAll("#searchArea li");
     var checkbox = document.querySelectorAll("#searchArea input[type=\"checkbox\"]");
@@ -121,7 +122,7 @@ var ui = {
           checkbox[i].checked = true;
           ui.setSimpleSearchStates();
         }
-        else if(e.target.className === "searchCheckbox"){
+        else if(e.target.className === "searchCheckbox" || e.target.tagName === "LI" || e.target.tagName === "SPAN"){
           checkbox[i].checked = false;
           ui.setSimpleSearchStates();
         }
@@ -137,6 +138,7 @@ var ui = {
       state += select[i].selectedIndex;
       settings.simpleSearchState[i] = state;
     }
+    settings.setCookieArray("simpleSearchState");
     display.applySimpleSearchState();
   },
 
@@ -156,6 +158,12 @@ var ui = {
       }
     }
     return displayStats;
+  },
+
+  simpleSearchReset:function(){
+    settings.simpleSearchState = [2,8,2,8,8,8,8,8,8,8,8,8];
+    settings.setCookieArray("simpleSearchState");
+    display.applySimpleSearchState();
   },
 
   simpleSearchSubmit:function(){
@@ -222,10 +230,11 @@ var ui = {
   },
 
   populateResultList:function(results){
+    var colors = ["DFF","CEF","BDF","ACF","9BF","8AF","CFC","AFA","9F9","7F7","5F5","FCC","FAA","F99","F77","F55"];
     var list = document.querySelector("#searchResults ul");
     var html = "";
     for(var i=0;i<results.length;i++){
-      html += "<li id=\"result"+i+"\"><input type=\"radio\" name=\"result\" value=\""+i+"\">";
+      html += "<li style=\"background-color:#"+colors[results[i][0]]+"\" id=\"result"+i+"\"><input type=\"radio\" name=\"result\" value=\""+i+"\">";
       for(var j=0;j<results[i].length;j++){
         var type = ui.lists[j];
         var label = str.get(type,groups[type][results[i][j]][0]);
@@ -286,6 +295,7 @@ var ui = {
   init:function(){
     var partLists = document.querySelectorAll(".partSelect");
     for(var i=0;i<partLists.length;i++){
+      partLists[i].selectedIndex = 0;
       partLists[i].onchange = ui.onPartChange;
       partLists[i].onkeydown = ui.onPartListKeyDown;
     }
@@ -293,6 +303,7 @@ var ui = {
     document.getElementById("sortOptions").onchange = ui.onSortOptionsChange;
     document.getElementById("sortOrder").onchange = ui.onSortOrderChange;
     document.getElementById("displayMode").onchange = ui.onDisplayModeChange;
+    document.getElementById("simpleSearchReset").onclick = ui.simpleSearchReset;
     document.getElementById("simpleSearchSubmit").onclick = ui.simpleSearchSubmit;
 
     var simpleSearchLi = document.querySelectorAll("#searchArea li");
