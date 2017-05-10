@@ -4,10 +4,11 @@
 
 var settings = {
   partOptions:0,
-  displays:1,
+  displayMode:1,
   locale:0,
   sortOptions:0,
   sortOrder:0,
+  simpleSearchState:[2,8,2,8,8,8,8,8,8,8,8,8],
 
   set:function(property,value){
     settings[property] = value;
@@ -40,6 +41,6 @@ var settings = {
   },
 
   init:function(){
-
+	ui.setDisplayMode();
   }
 };

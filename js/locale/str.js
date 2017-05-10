@@ -1,4 +1,4 @@
-/* languages.js
+﻿/* str.js
   Provides a function to get a localized version of a specific String, and all hardcoded information.
     -str.get(type,id) - get a String from the [type] property, at index [id]. Uses the user's language setting by default. Example:
       str.get("label",1) will return "Body" if the user's language is English, or "Châssis" if the user's language is French
@@ -9,7 +9,11 @@ var str = {
     return str[type][id][settings.locale];
   },
 
-  language: ["English (NOA)","English (NOE)","Français (NOA)","Français (NOE)"],
+  buildHeader: [["Build #1","Build #1","Ensemble #1","Ensemble #1"],
+          ["Build #2","Build #2","Ensemble #2","Ensemble #2"]],
+
+  partSelectHeader: [["Build #1 Part Select","Build #1 Part Select","Pièces d'ensemble #1","Pièces d'ensemble #1"],
+                     ["Build #2 Part Select","Build #2 Part Select","Pièces d'ensemble #2","Pièces d'ensemble #2"]],
 
   label: [["Character","Character","Personnage","Personnage"],
           ["Body","Body","Châssis","Châssis"],
@@ -29,12 +33,18 @@ var str = {
          ["Miniturbo","Miniturbo","Miniturbo","Miniturbo"],
          ["Handling (Grav)","Handling (Grav)","Maniabilité (AG)","Maniabilité (AG)"]],
 
+  optionsHeaders: [["Part Selection","Part Selection","Sélection de pièces","Sélection de pièces"],
+                   ["Sort By","Sort By","Trier par","Trier par"],
+                   ["Display Mode","Display Mode","Mode d'affichage","Mode d'affichage"]],
   partOptions: [["All Parts","All Parts","Toutes les pièces","Toutes les pièces"],
                 ["Unique Groups","Unique Groups","Groupes uniques","Groupes uniques"]],
   sortOptions: [["Default","Default","Défaut","Défaut"],
-               ["Name","Name","Prénom","Prénom"]],
+                ["Name","Name","Prénom","Prénom"]],
   sortOrder: [["Ascending Order","Ascending Order","Ordre croissant","Ordre croissant"],
               ["Descending Order","Descending Order","Ordre décroissant","Ordre décroissant"]],
+  displayMode: [["Individual Stats","Individual Stats","Individuellement","Individuellement"],
+                ["Search (Simple)","Search (Simple)","Rechercher (simple)","Rechercher (simple)"],
+                ["Search (Custom)","Search (Custom)","Rechercher (personnalisée)","Rechercher (personnalisée)"]],
 
   chara: [["Mario","Mario","Mario","Mario"],
           ["Luigi","Luigi","Luigi","Luigi"],
@@ -90,7 +100,7 @@ var str = {
          ["Tri-Speeder","Tri-Speeder","Tubul R3","Tubul R3"],
          ["Badwagon","Badwagon","Stéréo-bolide","Beat-bolide"],
          ["Prancer","Prancer","Deux-chevaux","Cavalkart"],
-         ["Biddybuggy","Buggybud","Paracoccinelly(?)","Paracoccinelly"],
+         ["Biddybuggy","Buggybud","Paracoccinelly(?)","Paracoccinelly"], //Check: [2]
          ["Landship","Landship","Batea roulant","Caravéloce"],
          ["Sneeker","Bounder","Espakart","Sneakart"],
          ["Sports Coupe","Sports Coupé","Coupé sport","Propulsar"],
@@ -99,28 +109,28 @@ var str = {
          ["W 25 Silver Arrow","W 25 Silver Arrow","W25 Flèche d'argent","W25 Flèche d'argent"],
          ["300 SL Roadster","300 SL Roadster","300 SL Roadster","300 SL Roadster"],
          ["Blue Falcon","Blue Falcon","Blue Falcon","Blue Falcon"],
-         ["Tanooki Kart","Tanooki Kart","Buggy tanuki(?)","Buggy tanuki"],
+         ["Tanooki Kart","Tanooki Kart","Buggy tanuki","Buggy tanuki"], //Check: [2]
          ["B Dasher","B Dasher","Intrépide","Intrépide"],
          ["Streetle","Streetle","Autorhino","Autorhino"],
          ["P-Wing","P-Wing","Magikart","Magikart"],
-         ["Koopa Clown","Koopa Clown"],
-         ["Standard Bike","Standard Bike","Moto standard"],
-         ["Comet","Comet"],
-         ["Sport Bike","Sport Bike"],
-         ["The Duke","The Duke"],
-         ["Flame Rider","Flame Rider"],
-         ["Varmint","Varmint"],
-         ["Mr. Scooty","Mr Scooty"],
-         ["Jet Bike","Jet Bike"],
-         ["Yoshi Bike","Yoshi Bike"],
-         ["Master Cycle","Master Cycle"],
-         ["City Tripper","City Tripper"],
-         ["Standard ATV","Standard Quad"],
-         ["Wild Wiggler","Wild Wiggler"],
-         ["Teddy Buggy","Teddy Buggy"],
-         ["Bone Rattler","Bone Rattler"],
-         ["Inkstriker","Inkstriker"],
-         ["Splat Buggy","Splat Buggy"]],
+         ["Koopa Clown","Koopa Clown","Clown Koopa","Clown Koopa"], //Check: [3]
+         ["Standard Bike","Standard Bike","Moto standard","Moto standard"], //Check: [3]
+         ["Comet","Comet","Turboto","Météore"],
+         ["Sport Bike","Sport Bike","Sport GP","Sport GP"], //Check: [2]
+         ["The Duke","The Duke","Cybertrombe","Cybertrombe"], //Check: [2]
+         ["Flame Rider","Flame Rider","Flamboyante","Flamboyante"],
+         ["Varmint","Varmint","Mécabécane","Mécabécane"], //Check: [2]
+         ["Mr. Scooty","Mr Scooty","Scootinette","Scootinette"],
+         ["Jet Bike","Jet Bike","Épervier","Épervier"], //Check: [2]
+         ["Yoshi Bike","Yoshi Bike","Yoshimoto","Yoshimoto"], //Check: [3]
+         ["Master Cycle","Master Cycle","Destrier de légende","Destrier de légende"], //Check [3]
+         ["City Tripper","City Tripper","Scooter AC","Scooter AC"],
+         ["Standard ATV","Standard Quad","VTT standard","Quad standard"],
+         ["Wild Wiggler","Wild Wiggler","VTT Wiggler","Quad Wiggler"],
+         ["Teddy Buggy","Teddy Buggy","VTT nounourse","Quad nounours"],
+         ["Bone Rattler","Bone Rattler","Malécycle","Malécycle"], //Check [2]
+         ["Inkstriker","Inkstriker","Missile tornade","Missile tornade"], //Check [2]
+         ["Splat Buggy","Splat Buggy","Kartoon"]], //Check [3]
 
   tire: [["Standard","Normal"],
          ["Monster","Monster"],

@@ -16,7 +16,6 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<div id="contentWrapper">
 <div id="optionsBar" class="separator">
 <h1>Mario Kart 8 Deluxe Stat Calculator</h1> | 
 <h1>Language:</h1>
@@ -27,6 +26,9 @@
 	<li>Français (NoE)</li>
 </ul>
 </div>
+<div id="heightWrapper">
+<div id="widthWrapper">
+
 <div id="statDisplayContainer">
   <div id="statDisplay1" class="statDisplay">
     <h1 class="buildHeader">Build #1</h1>
@@ -300,18 +302,179 @@
   <select id="sortOrder">
     <option>Ascending Order</option>
     <option>Descending Order</option>
+  </select> |
+  <h1>Display Mode: </h1>
+  <select id="displayMode">
+    <option>Individual Stats</option>
+    <option>Search (Simple)</option>
+    <option>Search (Custom)</option>
   </select>
 </div>
 <div id="searchContainer">
-  <div id="searchArea">
-    Search Conditions
+  <div id="searchArea" style="display:none">
+    <p>Find new combinations in which...</p>
+    <ul>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Speed</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Speed (Air)</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Acceleration</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Speed (Water)</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Weight</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Speed (Grav)</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Handling</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Handling (Air)</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Traction</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Handling (Water)</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Miniturbo</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+      <li><div class="searchCheckbox"><input type="checkbox"></div><span class="simpleSearchStat">Handling (Grav)</span><select><option>&lt;</option><option>&le;</option><option>=</option><option>&ge;</option><option>&gt;</option><option>&ne;</option></select> Build #1</li>
+    </ul>
+
+    <input id="simpleSearchSubmit" type="button" value="Search">
+    <p>Only conditions with a checkbox marked (left) will be used</p>
   </div>
-  <div id="searchResults">
-    Search Results
+  <div id="searchResults" style="display:none">
+    <ul>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+      <li><input type="radio" name="result">
+<span class="resultsPartition">Pink Gold Peach</span>
+<span class="resultsPartition">W 25 Silver Arrow</span>
+<span class="resultsPartition">Retro Off-Road</span>
+<span class="resultsPartition">MKTV Parafoil</span>
+</li>
+
+    </ul>
   </div>
-  <div id="footer" class="separator">Footer / Credit</div>
+  <div id="individualStatsArea">
+    <table>
+      <tr>
+        <td></td>
+        <td>Speed</td>
+        <td>Acceleration</td>
+        <td>Weight</td>
+        <td>Handling</td>
+        <td>Traction</td>
+        <td>Miniturbo</td>
+        <td>Speed (Air)</td>
+        <td>Speed (Water)</td>
+        <td>Speed (Grav)</td>
+        <td>Handling (Air)</td>
+        <td>Handling (Water)</td>
+        <td>Handling (Grav)</td>
+      <tr>
+        <td>Character #1</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Body #1</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Tires #1</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Glider #1</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Character #2</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Body #2</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Tires #2</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Glider #2</td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </table>
+  </div>
 </div>
 </div>
+<div id="footer" class="separator"><h1>Note: Still a work in progress, some features are not working now but will later (like Searching)</h1></div>
+</div>
+
 <script>
 function init(){
   str.init();
