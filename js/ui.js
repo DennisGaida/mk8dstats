@@ -11,6 +11,7 @@ var ui = {
   lists:["chara","kart","tire","glider"],
   selected:[-1,-1,-1,-1,-1,-1,-1,-1],
   currentResults:[],
+  maxSearchResults:500,
 
   onPartChange:function(){
     var lists = document.querySelectorAll(".partSelect");
@@ -178,14 +179,53 @@ var ui = {
         }
       }
     }
-    ui.populateResultList(results);
+ /*   //Remove Build #1 from results
+    var buildOne = [];
+    var lists = document.querySelectorAll(".partSelect");
+    for(var i=0;i<4;i++){
+      var partIndex = ui.getSelectedIndex(i);
+      var partSet = parts[ui.lists[i%4]][partIndex][1];
+      for(var j=0;j<parts[ui.lists[i%4]+"_unique"].length;j++){
+        if(parts[ui.lists[i%4]+"_unique"][j][1] == partSet){
+          buildOne[i] = parts[ui.lists[i%4]+"_unique"][j][1];
+          break;
+        }
+      }
+    }
+    for(i=0;i<results.length;i++){
+      alert(results[i]+"\n"+buildOne);
+      if(buildOne[0] == results[i][0] &&
+         buildOne[1] == results[i][1] &&
+         buildOne[2] == results[i][2] &&
+         buildOne[3] == results[i][3]){
+           results.splice(i,1);
+           break;
+      }
+    } */
+
+    var list = document.querySelector("#searchResults ul");
+    var message = document.getElementById("searchResultsMessage");
+    if(results.length == 0){
+      list.innerHTML = "";
+      message.innerHTML = "No results found.";
+      message.style.display = "block";
+    }
+    else if(results.length > ui.maxSearchResults){
+      list.innerHTML = "";
+      message.innerHTML = "Too many search results to display.<br>Found: "+results.length+"<br>Limit: "+ui.maxSearchResults;
+      message.style.display = "block";
+    }
+    else{
+      ui.populateResultList(results);
+      message.style.display = "none";
+    }
   },
 
   populateResultList:function(results){
     var list = document.querySelector("#searchResults ul");
     var html = "";
     for(var i=0;i<results.length;i++){
-      html += "<li><input type=\"radio\" name=\"result\" value=\""+i+"\">";
+      html += "<li id=\"result"+i+"\"><input type=\"radio\" name=\"result\" value=\""+i+"\">";
       for(var j=0;j<results[i].length;j++){
         var type = ui.lists[j];
         var label = str.get(type,groups[type][results[i][j]][0]);
@@ -195,9 +235,11 @@ var ui = {
     } 
     list.innerHTML = html;
     ui.currentResults = results;
+    var lis = document.querySelectorAll("#searchResults li");
     var radios = document.querySelectorAll("#searchResults input[type=\"radio\"]");
     for(i=0;i<radios.length;i++){
       radios[i].onchange = ui.onResultChange;
+      lis[i].onclick = ui.onResultClick;
     }
   },
 
@@ -210,6 +252,17 @@ var ui = {
       partLists[i+4].selectedIndex = ui.getSelectedIndex(i+4);
     }
     display.updateStatDisplay();
+  },
+
+  onResultClick:function(e){
+    var radios = document.querySelectorAll("#searchResults input[type=\"radio\"]");
+    var lis = document.querySelectorAll("#searchResults li");
+    var target = e.target;
+    if(target.tagName !== "LI") target = target.parentElement;
+    var index = target.id.substring(6);
+    radios[index].checked = true;
+    radios[index].focus();
+    ui.onResultChange();
   },
 
   simpleSearchValidateBuild:function(displayStats,order,chara,kart,tire,glider){

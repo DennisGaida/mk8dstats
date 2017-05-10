@@ -372,6 +372,16 @@ h1:last-child{
 	overflow:auto;
 	float:left;
 }
+#searchResultsMessage{
+	height:100%;
+	width:100%;
+	color:#222;
+        padding-top:50px;
+	font-size:2em;
+	text-align:center;
+	box-sizing:border-box;
+	display:block;
+}
 #individualStatsArea{
 	width:100%;
 	height:calc(100% - 23px);
