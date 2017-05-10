@@ -4,7 +4,7 @@
 
 var settings = {
   partOptions:0,
-  displayMode:1,
+  displayMode:0,
   locale:0,
   sortOptions:0,
   sortOrder:0,
